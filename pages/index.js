@@ -47,14 +47,12 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
+        <title>Team 49 project</title>
       </Head>
 
       <main className={styles.main}>
-        <h3>Write a sentence that better describes how do you felt today, this week/month/year</h3>
+        <h3>Write a sentence that better describes how did you feel today, this week/month/year</h3>
         
-        <script>console.log(book)</script>
         <form onSubmit={onSubmit}>
           <input
             type="text"
