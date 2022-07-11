@@ -20,14 +20,18 @@ public class GbooksApiServlet extends HttpServlet{
         CloseableHttpClient httpclient = HttpClients.createDefault();
         HttpGet httpGet = new HttpGet(url);
         CloseableHttpResponse response1 = httpclient.execute(httpGet);
+    
         try {
             System.out.println(response1.getStatusLine());
             String responseString = EntityUtils.toString(response1.getEntity());
             System.out.println(responseString);
             response.setContentType("text/html;");
+            json = gson.toJson(responseString);
+            response.setContentType("application/json;");
+            response.getWriter().println(json);
             response.getWriter().println("<p>You entered: " + responseString + "</p>");
         }finally {
             response1.close();
         }
-    }
-}
+    }//doPost
+}//GbooksApiServlet
