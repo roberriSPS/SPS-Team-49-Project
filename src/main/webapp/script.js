@@ -26,3 +26,31 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+async function displayBook() {
+    const responseFromServer = await fetch('/sentiment');
+    const books = await responseFromServer.json();
+    const displayBook = document.getElementById('display-book');
+    displayBook.innerHTML = '';
+
+    //make a list of all book options
+    const bookList = books.items;
+        const title =  bookList[2].volumeInfo.title;
+        const author = bookList[2].volumeInfo.authors[0];
+        const description = bookList[2].volumeInfo.description;
+        const link = bookList[2].volumeInfo.previewLink;
+
+    //make a list of elements:
+    displayBook.appendChild(createListElement('Author: ' + author));
+    displayBook.appendChild(createListElement('Title: ' + title));
+    displayBook.appendChild(createListElement('Description: ' + description));
+    displayBook.appendChild(createListElement('Link: ' + link));
+    
+    //console.log(bookList[2]);
+}
+
+function createListElement(text) {
+    const liElement = document.createElement('li');
+    liElement.innerText = text;
+    return liElement;
+  }
