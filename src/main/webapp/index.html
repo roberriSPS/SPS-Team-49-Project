@@ -2,22 +2,55 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Team 49 SPS project</title>
+    <title>The Mental Health Bookstore.</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
   </head>
   <body>
-    <div id="content">
-      <h1>Sentiment Analysis</h1>
-      <p>Type a message and click submit to analyze its sentiment:</p>
 
-    <form method="POST" action="/sentiment">
-      <textarea name="message"></textarea>
-      <br/>
-      <button>Submit</button>
-    </form>
+    <div class = "begin">
+
+        <div class = "cover-page">
+            <div class = "heading-container">
+                <h1 class = "name">The Mental Health Bookstore.</h1>
+                <div class = "secondary">
+                  <p> A mental health resource app. A project by Torrin, Rhea, Sophia and Iván.</p>
+                </div>
+            </div>
+        </div>
     
-    <button onclick = "displayBook()">button</button>
+
+        <div class = "library-page">
+            <div class = "heading-container">
+                <h1 class = "section-head">The Library.</h1>
+                <br>
+                <div class = "secondary">
+                    <p>It's been found that both reading and journaling can improve sleep quality, reduce stress, and increase cognitive acuity.</p>
+                    <p> Use this space to reflect on your day; we'll reccomend a book based on how you're feeling.</p>
+                </div>
+                <br>
+                <div class = "secondary">
+          <form method="POST" action="/sentiment">
+                  <textarea name="message" placeholder = "Start journaling..."  cols="60" rows="20"></textarea>
+               <br/>
+             <button class = "basicbutton button1">Recommend Me A Book!</button>
+            </form>
+            <button onclick = "displayBook()">Test Button</button>
+             </div>
+          </div>
+        </div>
+
+        <div class = "library-page">
+            <div class = "heading-container">
+                <h1 class = "section-head">The Resources.</h1>
+                <br>
+                <div class = "secondary">
+                  <p> Mental health wellness is a lifelong process that can require proactivity.</p>
+                  <p> Click <a href = "https://app.projecthealthyminds.com/?gclid=EAIaIQobChMIlf3Y4Or4-AIVGeDICh0TfQfEEAAYAyAAEgKOufD_BwE">HERE</a> for a non-comprehensive list of mental health resources that can be browsed by emotional state or resource type. </p>
+                  <p>These resources have been curated bu a national nonprofit.</p>
+                </div>
+            </div>
+        </div>
     
     </div>
   </body>
