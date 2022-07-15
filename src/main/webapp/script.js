@@ -27,8 +27,12 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
-async function displayBook() {
-    const responseFromServer = await fetch('/sentiment');
+async function bookDisplay() {
+    const userText  = document.querySelector("#userText");
+    //console.log(userText.value);
+    const responseFromServer = await fetch(`/sentiment?message=${userText.value}`);
+    //const text = await responseFromServer.text();
+    //console.log(text);
     const books = await responseFromServer.json();
     const displayBook = document.getElementById('display-book');
     displayBook.innerHTML = '';
@@ -45,8 +49,6 @@ async function displayBook() {
     displayBook.appendChild(createListElement('Title: ' + title));
     displayBook.appendChild(createListElement('Description: ' + description));
     displayBook.appendChild(createListElement('Link: ' + link));
-    
-    //console.log(bookList[2]);
 }
 
 function createListElement(text) {
