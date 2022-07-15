@@ -19,7 +19,7 @@ import org.apache.http.util.EntityUtils;
 @WebServlet("/sentiment")
 public class SentimentServlet extends HttpServlet {
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String message = request.getParameter("message");
 
         Document doc =
@@ -56,7 +56,8 @@ public class SentimentServlet extends HttpServlet {
         response.setContentType("application/json;");
         response.getWriter().println(json);
 
-    }//doPost
+        //response.getWriter().println(message);
+    }//doGet
 
     /**
      * Makes a GET Request to the Google books API based on a mood parameter and returns the response as a String.
