@@ -42,7 +42,7 @@ async function bookDisplay() {
 
     //generate a random number to examine:
     const rand = await randNum(bookList.length);
-    const match = 0;
+    var match = 0;
 
     while (match == 0) {
     if (bookList[rand].volumeInfo.language === "en") {
