@@ -39,13 +39,26 @@ async function bookDisplay() {
 
     //make a list of all book options
     const bookList = books.items;
-        const title =  bookList[2].volumeInfo.title;
-        const author = bookList[2].volumeInfo.authors[0];
-        const description = bookList[2].volumeInfo.description;
-        const link = bookList[2].volumeInfo.previewLink;
+
+    //generate a random number to examine:
+    const rand = await randNum(bookList.length);
+    const match = 0;
+
+    while (match == 0) {
+    if (booksList[rand].volumeInfo.language === "en") {
+      const title =  bookList[rand].volumeInfo.title;
+      const author = bookList[rand].volumeInfo.authors[0];
+      const description = bookList[rand].volumeInfo.description;
+      const link = bookList[rand].volumeInfo.previewLink;
+      match = 1;
+    }
+    else {
+        rand = await randNum(bookList.length);
+    }
+    }   
 
     //make a list of elements:
-    displayBook.appendChild(createListElement('Author: ' + author));
+    displayBook.appendChild(createListElement('Primary Author: ' + author));
     displayBook.appendChild(createListElement('Title: ' + title));
     displayBook.appendChild(createListElement('Description: ' + description));
     displayBook.appendChild(createListElement('Link: ' + link));
@@ -56,3 +69,7 @@ function createListElement(text) {
     liElement.innerText = text;
     return liElement;
   }
+
+  function randNum(num) {
+    return Math.floor(Math.random() * num);
+}
