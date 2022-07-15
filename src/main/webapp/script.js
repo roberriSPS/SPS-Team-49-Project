@@ -45,11 +45,11 @@ async function bookDisplay() {
     const match = 0;
 
     while (match == 0) {
-    if (booksList[rand].volumeInfo.language === "en") {
-      const title =  bookList[rand].volumeInfo.title;
-      const author = bookList[rand].volumeInfo.authors[0];
-      const description = bookList[rand].volumeInfo.description;
-      const link = bookList[rand].volumeInfo.previewLink;
+    if (bookList[rand].volumeInfo.language === "en") {
+      var title =  bookList[rand].volumeInfo.title;
+      var author = bookList[rand].volumeInfo.authors[0];
+      var description = bookList[rand].volumeInfo.description;
+      var link = bookList[rand].volumeInfo.previewLink;
       match = 1;
     }
     else {
