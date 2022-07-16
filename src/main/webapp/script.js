@@ -40,7 +40,7 @@ async function bookDisplay() {
     //make a list of all book options
     const bookList = books.items;
 
-    //generate a random number to examine:
+    //generate a random number to examine, and verify that it is in english:
     const rand = await randNum(bookList.length);
     var match = 0;
 
@@ -57,9 +57,16 @@ async function bookDisplay() {
     }
     }   
 
+    //check whether there are multiple authors:
+
+    if ((bookList[rand].volumeInfo.authors).length > 1) {
+        displayBook.appendChild(createListElement('"' + title + '", by ' + author));
+    }
+    else {
+        displayBook.appendChild(createListElement('"' + title + '", by ' + author + " et al."));
+    }
+
     //make a list of elements:
-    displayBook.appendChild(createListElement('Primary Author: ' + author));
-    displayBook.appendChild(createListElement('Title: ' + title));
     displayBook.appendChild(createListElement('Description: ' + description));
     displayBook.appendChild(createListElement('Link: ' + link));
 }
