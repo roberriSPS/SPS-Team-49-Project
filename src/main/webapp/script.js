@@ -60,15 +60,15 @@ async function bookDisplay() {
     //check whether there are multiple authors:
 
     if ((bookList[rand].volumeInfo.authors).length > 1) {
-        displayBook.innerHTML += "We recommend \"" + title + ", \" by " + author;
+        displayBook.innerHTML += "We recommend \"" + title + ",\" by " + author + ". ";
     
     }
     else {
-        displayBook.innerHTML += "We recommend \"" + title + ", \" by " + author + " et al.";
+        displayBook.innerHTML += "We recommend \"" + title + ",\" by " + author + " et al. ";
     }
 
     //make a list of elements:
-    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link) + ". For now, here is a brief description: " + description;
+    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link) + ". For now, here is a brief description of the book: " + description;
 }
 
 function createListElement(text) {
@@ -86,6 +86,6 @@ function linkify(inputText) {
 
     //URLs starting with http://, https://, or ftp://
     replacePattern = /(\b(https?|ftp):\/\/[-A-Z0-9+&@#\/%?=|!:,.;]*[-A-Z0-9+&@#\/%=|])/gim;
-    replacedText = inputText.replace(replacePattern1, '<a href="$1" target="_blank">$1</a>');
+    replacedText = inputText.replace(replacePattern, '<a href="$1" target="_blank">$1</a>');
     return replacedText;
 }
