@@ -51,7 +51,7 @@ async function bookDisplay() {
       var description = bookList[rand].volumeInfo.description;
       var link = bookList[rand].volumeInfo.previewLink;
       var pages = bookList[rand].volumeInfo.pageCount;
-      var price = bookList[rand].retailPrice.amount;
+      var price = bookList[rand].saleInfo.retailPrice.amount;
       var ebook = bookList[rand].saleInfo.isEbook;
       match = 1;
     }
