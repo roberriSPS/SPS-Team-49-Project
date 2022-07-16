@@ -60,15 +60,15 @@ async function bookDisplay() {
     //check whether there are multiple authors:
 
     if ((bookList[rand].volumeInfo.authors).length > 1) {
-        displayBook.appendChild('We recommend "' + title + '," by ' + author);
+        displayBook.innerHTML += "We recommend \"" + title + ", \" by " + author;
+    
     }
     else {
-        displayBook.appendChild('We recommend "' + title + '," by ' + author + " et al.");
+        displayBook.innerHTML += "We recommend \"" + title + ", \" by " + author + " et al.";
     }
 
     //make a list of elements:
-    displayBook.appendChild(createListElement('Description: ' + description));
-    displayBook.appendChild(createListElement('Link: ' + linkify(link)));
+    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link) + ". For now, here is a brief description: " + description;
 }
 
 function createListElement(text) {
