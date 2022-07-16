@@ -68,7 +68,7 @@ async function bookDisplay() {
     }
 
     //make a list of elements:
-    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link) + ". For now, here is a brief description of the book: " + description;
+    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-3)) + "."
 }
 
 function createListElement(text) {
