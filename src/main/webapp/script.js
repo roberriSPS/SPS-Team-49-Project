@@ -51,7 +51,7 @@ async function bookDisplay() {
       var description = bookList[rand].volumeInfo.description;
       var link = bookList[rand].volumeInfo.previewLink;
       var pages = bookList[rand].volumeInfo.pageCount;
-      var price = bookList[rand].saleInfo.retailPrice.amount;
+     // var price = bookList[rand].saleInfo.retailPrice.amount;
       var ebook = bookList[rand].saleInfo.isEbook;
       match = 1;
     }
@@ -71,10 +71,10 @@ async function bookDisplay() {
     }
 
     //make a list of elements:
-    displayBook.innerHTML += "This book is " + pages + " pages long and retails for $" + price + ". ";
+    displayBook.innerHTML += "This book is " + pages + " pages long, and "
 
     //check if is ebook:
-    displayBook.innerHTML += (ebook ? "It is offered as an ebook. " : "It is not offered as an ebook. ");
+    displayBook.innerHTML += (ebook ? "it is offered as an ebook. " : "it is not offered as an ebook. ");
 
     displayBook.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
 }
