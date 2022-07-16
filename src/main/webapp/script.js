@@ -37,6 +37,9 @@ async function bookDisplay() {
     const displayBook = document.getElementById('display-book');
     displayBook.innerHTML = '';
 
+    const displayLink = document.getElementById('display-link');
+    displayLink.innerHTML = '';
+
     //make a list of all book options
     const bookList = books.items;
 
@@ -76,7 +79,7 @@ async function bookDisplay() {
     //check if is ebook:
     displayBook.innerHTML += (ebook ? "it is offered as an ebook. " : "it is not offered as an ebook. ");
 
-    displayBook.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
+    displayLink.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
 }
 
 
