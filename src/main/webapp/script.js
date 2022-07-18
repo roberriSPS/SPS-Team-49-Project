@@ -56,7 +56,15 @@ async function bookDisplay() {
       var pages = bookList[rand].volumeInfo.pageCount;
      // var price = bookList[rand].saleInfo.retailPrice.amount;
       var ebook = bookList[rand].saleInfo.isEbook;
+      var image = bookList[rand].volumeInfo.imageLinks.smallThumbnail;
       match = 1;
+
+      //display image link: (DECIDE WHETHER WE WANT THESE TO ACCUMULATE)
+      var img = new Image();
+      img.src = image;
+      img.setAttribute("class", "book-image");
+      img.setAttribute("alt", "book-image");
+      document.getElementById("img-container").appendChild(img);
     }
     else {
         rand = await randNum(bookList.length);
@@ -77,9 +85,13 @@ async function bookDisplay() {
     displayBook.innerHTML += "This book is " + pages + " pages long, and "
 
     //check if is ebook:
-    displayBook.innerHTML += (ebook ? "it is offered as an ebook. " : "it is not offered as an ebook. ");
+    displayBook.innerHTML += (ebook ? "it is offered as an ebook. " : "it is not offered as an ebook. Click the image to learn more:");
 
-    displayLink.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
+   // displayLink.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
+
+    //add hyperlink to image:
+    var a = document.getElementById('book-link'); 
+    a.href = link;
 }
 
 
