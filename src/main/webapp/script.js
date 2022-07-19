@@ -15,6 +15,8 @@
 /**
  * Adds a random greeting to the page.
  */
+
+var count = 0;
 function addRandomGreeting() {
   const greetings =
       ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
@@ -59,12 +61,8 @@ async function bookDisplay() {
       var image = bookList[rand].volumeInfo.imageLinks.smallThumbnail;
       match = 1;
 
-      //display image link: (DECIDE WHETHER WE WANT THESE TO ACCUMULATE)
-      var img = new Image();
-      img.src = image;
-      img.setAttribute("class", "book-image");
-      img.setAttribute("alt", "book-image");
-      document.getElementById("img-container").appendChild(img);
+     
+     // document.getElementById("img-container").value = img;
     }
     else {
         rand = await randNum(bookList.length);
@@ -88,6 +86,24 @@ async function bookDisplay() {
     displayBook.innerHTML += (ebook ? "it is offered as an ebook. " : "it is not offered as an ebook. Click the image to learn more:");
 
    // displayLink.innerHTML += "You can find more information about this book here: " + linkify(link.substring(0, link.length-4)) + "."
+
+    //display image link: (DECIDE WHETHER WE WANT THESE TO ACCUMULATE)
+    count++;
+    var img = new Image();
+    img.src = image;
+    img.setAttribute("class", "book-image");
+    img.setAttribute("alt", "book-image");
+
+    if (count > 1) {
+        let element = document.getElementById("img-container");
+            while (element.firstChild) {
+                element.removeChild(element.firstChild);
+            }
+        document.getElementById("img-container").appendChild(img);
+    }
+    else if (count == 1) {
+      document.getElementById("img-container").appendChild(img); //switch append child
+    }
 
     //add hyperlink to image:
     var a = document.getElementById('book-link'); 
