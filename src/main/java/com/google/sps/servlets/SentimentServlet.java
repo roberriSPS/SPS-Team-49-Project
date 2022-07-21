@@ -1,6 +1,5 @@
 package com.google.sps.servlets;
 
-import com.google.gson.Gson;
 import com.google.cloud.language.v1.Document;
 import com.google.cloud.language.v1.LanguageServiceClient;
 import com.google.cloud.language.v1.Sentiment;
@@ -20,6 +19,7 @@ import org.apache.http.util.EntityUtils;
 public class SentimentServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        //get sentiment
         String message = request.getParameter("message");
 
         Document doc =
@@ -29,22 +29,10 @@ public class SentimentServlet extends HttpServlet {
         double score = sentiment.getScore();
         languageService.close();
 
-        String queryParameter = "";
+        //determine query parameter for the books api call
+        String queryParameter = determineQueryParameter(score);
 
-        boolean clearlyPositive = (score >= 0.25) && (score <= 1);
-        boolean clearlyNegative = (score >= -1) && (score <= -0.25);
-
-        //ignoring magnitude, neutral emotions, and mixed emotions for now
-        if(clearlyPositive) {
-            queryParameter = "positive+books";
-        } else if (clearlyNegative) {
-            queryParameter = "self+help+books";
-        } else {
-            //handle neutral emotions later
-            //handle mixed emotions later                
-            queryParameter = "funny";
-        }
-
+        //fetch books api based on query parameter
         String json = "";
         try {
             json = fetchBooksApi(queryParameter);
@@ -52,11 +40,9 @@ public class SentimentServlet extends HttpServlet {
             e.getMessage();
         }
 
-        //respond with JSON of book based on sentiment score
+        //respond with JSON of books based on sentiment score
         response.setContentType("application/json;");
         response.getWriter().println(json);
-
-        //response.getWriter().println(message);
     }//doGet
 
     /**
@@ -80,5 +66,27 @@ public class SentimentServlet extends HttpServlet {
         }
         return responseString;
     }//fetchBookApi
+
+    /**
+     * Determines an appropriate query parameter for books api based on the sentiment score.
+     * @param score sentiment score.
+     * @return String containing the query parameter.
+     */
+    private String determineQueryParameter(double score) {
+        boolean clearlyPositive = (score >= 0.25) && (score <= 1);
+        boolean clearlyNegative = (score >= -1) && (score <= -0.25);
+        boolean isMixed = (score > -0.25) && (score < 0.25);
+
+        if(clearlyPositive) {
+            return "positive+books";
+        } else if (clearlyNegative) {
+            return "self+help+books";
+        } else if(isMixed){               
+            return "motivational+books";
+        } 
+
+        //neutral book
+        return "thriller";
+    }
   
 }//SentimentServlet
