@@ -37,7 +37,7 @@
                 <div class = "secondary">
                   <textarea name="message" id="userText" placeholder = "Start journaling..."  cols="60" rows="20"></textarea>
                <br/>
-             <button class = "basicbutton button1" onclick = "bookDisplay()">Recommend Me A Book!</button>
+             <button class = "basicbutton button1" onclick = "bookDisplay();playlistDisplay();">Recommend Me A Book!</button>
              </div>
              <br>
              <div class = "secondary">
@@ -45,9 +45,13 @@
              <br>
              <div class = "secondary" id="display-link"> </div>
              <a id = "book-link"><div class="secondary" id="img-container"> </div></a>
+             
+            <iframe id="display-playlist" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+             
             </div>
           </div>
         </div>
+    
 
         <div class = "library-page">
             <div class = "heading-container">
