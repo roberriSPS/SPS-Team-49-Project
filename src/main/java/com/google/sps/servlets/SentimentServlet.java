@@ -14,7 +14,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-
 @WebServlet("/sentiment")
 public class SentimentServlet extends HttpServlet {
     @Override
@@ -66,6 +65,8 @@ public class SentimentServlet extends HttpServlet {
         }
         return responseString;
     }//fetchBookApi
+
+    
 
     /**
      * Determines an appropriate query parameter for books api based on the sentiment score.
