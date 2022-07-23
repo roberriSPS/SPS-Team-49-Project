@@ -7,8 +7,12 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 import se.michaelthelin.spotify.SpotifyApi;
+import se.michaelthelin.spotify.model_objects.credentials.AuthorizationCodeCredentials;
+import se.michaelthelin.spotify.model_objects.credentials.ClientCredentials;
 import se.michaelthelin.spotify.model_objects.specification.Paging;
 import se.michaelthelin.spotify.model_objects.specification.PlaylistSimplified;
+import se.michaelthelin.spotify.requests.authorization.authorization_code.AuthorizationCodeRefreshRequest;
+import se.michaelthelin.spotify.requests.authorization.client_credentials.ClientCredentialsRequest;
 import se.michaelthelin.spotify.requests.data.search.simplified.SearchPlaylistsRequest;
 import org.apache.hc.core5.http.ParseException;
 
@@ -71,7 +75,6 @@ public class SpotifyServlet extends HttpServlet {
 
         String responseString = "";
 
-        String accessToken = "BQBlI4tBNhYDkQeYeceG86Vr3SJ93_wD1-UHUQSxgJFraAvk7StpTHtrt9Qkd8NuvJF503k8Q6ajpvGuxi62eTycL_3wr6rSWjJOVo07WYiMgIN-yr-JzjotQpvtt0re2sXIH0hurgbD7Ui36fgiv7Lci4bcV2X1_gGUVOy0wV0EpVdhY4U";
         String client_id = "65240d81eab94dad85f467a4de4b2918"; //your client id
         String client_secret = "d9ec0c6e205c4ef3bc5944065bd18444"; //your client secret
         final String q = queryParameter;
@@ -79,9 +82,13 @@ public class SpotifyServlet extends HttpServlet {
         SpotifyApi spotifyApi = new SpotifyApi.Builder()
         .setClientId(client_id)
         .setClientSecret(client_secret)
-        .setAccessToken(accessToken)
         .build();
-    
+
+        final ClientCredentialsRequest clientCredentialsRequest = spotifyApi.clientCredentials().build();
+        final CompletableFuture<ClientCredentials> clientCredentialsFuture = clientCredentialsRequest.executeAsync();
+        final ClientCredentials clientCredentials = clientCredentialsFuture.join();
+        spotifyApi.setAccessToken(clientCredentials.getAccessToken());
+        
         final SearchPlaylistsRequest searchPlaylistsRequest = spotifyApi.searchPlaylists(q)
 //          .market(CountryCode.SE)
           .limit(10)

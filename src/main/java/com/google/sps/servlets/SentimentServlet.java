@@ -66,7 +66,6 @@ public class SentimentServlet extends HttpServlet {
         return responseString;
     }//fetchBookApi
 
-    
 
     /**
      * Determines an appropriate query parameter for books api based on the sentiment score.
