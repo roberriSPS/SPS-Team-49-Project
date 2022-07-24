@@ -29,11 +29,20 @@ function addRandomGreeting() {
   greetingContainer.innerText = greeting;
 }
 
+async function playlistDisplay() {
+    const userText  = document.querySelector("#floatingTextarea");
+    const responseFromServer = await fetch(`/spotify?message=${userText.value}`);
+    const textFromResponse = await responseFromServer.text();
+    const playlistContainer = document.getElementById('display-playlist');
+    playlistContainer.src = `https://open.spotify.com/embed/playlist/${textFromResponse}?utm_source=generator`;
+    console.log(textFromResponse)
+}
+
 async function bookDisplay() {
-    const userText  = document.querySelector("#userText");
+    const userText  = document.querySelector("#floatingTextarea");
     //console.log(userText.value);
     const responseFromServer = await fetch(`/sentiment?message=${userText.value}`);
-    //const text = await responseFromServer.text();
+    ///const text = await responseFromServer.text();
     //console.log(text);
     const books = await responseFromServer.json();
     const displayBook = document.getElementById('display-book');
@@ -129,3 +138,4 @@ function linkify(inputText) {
     replacedText = inputText.replace(replacePattern, '<a href="$1" target="_blank">$1</a>');
     return replacedText;
 }
+
