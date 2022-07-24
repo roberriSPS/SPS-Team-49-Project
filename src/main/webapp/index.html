@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <title>The Mental Health Bookstore.</title>
+    <title>TL;DR</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <script src="https://kit.fontawesome.com/45e81a434d.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
   </head>
   <body>
     <div class = "begin">
 
         <div class = "cover-page">
             <div class = "heading-container">
-                <h1 class = "name">The Mental Health Bookstore.</h1>
+                <h1 class = "name">TL;DR</h1>
                 <div class = "secondary">
-                    <p> <b> A mental health resource. Created by Torrin, Rhea, Sophia and Iván. </b> </p>
+                    <p> <b> [A mental health library.]</b></p>
                 </div>
                 <br>
                 <div class = "secondary">
@@ -23,7 +25,22 @@
                 </div>
             </div>
         </div>
-    
+
+        <div class = "library-page">
+            <div class = "heading-container">
+                <h1 class = "section-head">The Name.</h1>
+                <br>
+                <div class = "secondary">
+                  <p>The semicolon symbolizes continuation; it's used as a sign of solidarity and affirmation in the mental health community. </p>
+                  <p> With TL;DR, we are taking the literal meaning of the acronym to create a project that streamlines the process of finding mental health resources.</p>
+                  <p>Click <a href = "https://projectsemicolon.com/">here</a> to learn more about Project Semicolon.</p>
+                 <br>
+                </div>
+                <div class = "secondary">
+                    <h1 class = "name">;</h1>
+                </div>
+            </div>
+        </div>
 
         <div class = "library-page">
             <div class = "heading-container">
@@ -34,8 +51,11 @@
                     <p> Use this space to reflect on your day; we'll reccomend a book based on how you're feeling.</p>
                 </div>
                 <br>
+                <div class="form-floating">
+                    <textarea name="message" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea">Start journaling...</label>
+                </div>
                 <div class = "secondary">
-                  <textarea name="message" id="userText" placeholder = "Start journaling..."  cols="60" rows="20"></textarea>
                <br/>
              <button class = "basicbutton button1" onclick = "bookDisplay();playlistDisplay();">Recommend Me A Book!</button>
              </div>
@@ -45,13 +65,23 @@
              <br>
              <div class = "secondary" id="display-link"> </div>
              <a id = "book-link"><div class="secondary" id="img-container"> </div></a>
-             
-            <iframe id="display-playlist" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-             
             </div>
           </div>
         </div>
-    
+
+        <div class = "library-page">
+            <div class = "heading-container">
+                <h1 class = "section-head">Our songs selection for you</h1> 
+                <br>
+                <div class = "secondary">
+                    <p>Based on how you are feeling we recommend you this songs</p>
+                </div>
+                <br>
+                <div class = "secondary">
+                    <iframe id="display-playlist" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdPec7aLTmlC?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+                </div>
+            </div>
+        </div>
 
         <div class = "library-page">
             <div class = "heading-container">
@@ -100,10 +130,15 @@
                 </div>
                 <div class = "secondary">
                     <i class="fas fa-heart fa-4x fa-beat" style="--fa-animation-duration: 2s;"></i>
+                    <br>
+                    <br>
+                </div>
+                <div class = "secondary">
+                    <img src="withlove.png" height = "50" width = "205" alt = "Team 49 Signature"></i>
                 </div>
             </div>
         </div>
-    
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
   </body>
 </html>

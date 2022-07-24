@@ -95,11 +95,6 @@ a {
     color:white;
 }
 
-textarea {
-    font-family: 'Roboto';
-    font-size:1.5vh;
-}
-
 p {
     font-size:2vh;
 }
@@ -125,5 +120,14 @@ p {
     background-color: white; 
     color: #23d5ab; 
     border: 1px solid #23d5ab;
+}
+
+label{
+    display: inline-block;
+    color: black;
+}
+
+a{
+    color: white;
 }
 

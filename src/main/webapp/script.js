@@ -30,7 +30,7 @@ function addRandomGreeting() {
 }
 
 async function playlistDisplay() {
-    const userText  = document.querySelector("#userText");
+    const userText  = document.querySelector("#floatingTextarea");
     const responseFromServer = await fetch(`/spotify?message=${userText.value}`);
     const textFromResponse = await responseFromServer.text();
     const playlistContainer = document.getElementById('display-playlist');
@@ -39,7 +39,7 @@ async function playlistDisplay() {
 }
 
 async function bookDisplay() {
-    const userText  = document.querySelector("#userText");
+    const userText  = document.querySelector("#floatingTextarea");
     //console.log(userText.value);
     const responseFromServer = await fetch(`/sentiment?message=${userText.value}`);
     ///const text = await responseFromServer.text();
