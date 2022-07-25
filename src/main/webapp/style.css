@@ -91,12 +91,25 @@ body {
     color:white;
 }
 
-a {
+a:link {
+    color:white;
+    text-decoration: none;
+}
+
+a:visited {
+    color:white;
+}
+a:hover {
+    color:white;
+}
+a:active {
     color:white;
 }
 
+
 p {
     font-size:2vh;
+     
 }
 
 .basicbutton{
@@ -106,10 +119,10 @@ p {
     text-align: center;
     display: inline-block;
     font-size: 16px;
-    font-family: 'Roboto';
     margin: 3px 1.5px;
     transition-duration: 0.1s;
     cursor: pointer;
+    border-radius: 8px;
 }
 .button1 {
     background-color: #8EC5FC;
@@ -126,8 +139,3 @@ label{
     display: inline-block;
     color: black;
 }
-
-a{
-    color: white;
-}
-
