@@ -26,10 +26,11 @@ public class SentimentServlet extends HttpServlet {
         LanguageServiceClient languageService = LanguageServiceClient.create();
         Sentiment sentiment = languageService.analyzeSentiment(doc).getDocumentSentiment();
         double score = sentiment.getScore();
+        double magnitude = sentiment.getMagnitude();
         languageService.close();
 
         //determine query parameter for the books api call
-        String queryParameter = determineQueryParameter(score);
+        String queryParameter = determineQueryParameter(score, magnitude);
 
         //fetch books api based on query parameter
         String json = "";
@@ -72,10 +73,10 @@ public class SentimentServlet extends HttpServlet {
      * @param score sentiment score.
      * @return String containing the query parameter.
      */
-    private String determineQueryParameter(double score) {
+    private String determineQueryParameter(double score, double magnitude) {
         boolean clearlyPositive = (score >= 0.25) && (score <= 1);
         boolean clearlyNegative = (score >= -1) && (score <= -0.25);
-        boolean isMixed = (score > -0.25) && (score < 0.25);
+        boolean isMixed = ((score > -0.25) && (score < 0.25)) && (score != 0);
 
         if(clearlyPositive) {
             return "positive+books";
