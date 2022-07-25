@@ -114,7 +114,7 @@ public class SpotifyServlet extends HttpServlet {
     private String typeOfSongs(double score) {
         boolean clearlyPositive = (score >= 0.25) && (score <= 1);
         boolean clearlyNegative = (score >= -1) && (score <= -0.25);
-        boolean isMixed = (score > -0.25) && (score < 0.25);
+        boolean isMixed = ((score > -0.25) && (score < 0.25)) && (score != 0);
 
         if(clearlyPositive) {
             return "happy+songs";
@@ -124,7 +124,7 @@ public class SpotifyServlet extends HttpServlet {
             return "motivational+songs";
         } 
         //neutral book
-        return "thriller+songs";
+        return "top+50+global";
     }
 }
 
